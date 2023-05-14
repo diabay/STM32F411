@@ -199,14 +199,14 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 		strncpy(msgText, msgMode1Select, strlen(msgMode1Select));
 	}
 
-//	HAL_Delay(50);
-//	tpre = HAL_GetTick();
-//	while (HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_0) == GPIO_PIN_SET){
-//		if ((HAL_GetTick() - tpre) > 3000) {
-//			break;
-//		}
-//	}
-//	HAL_Delay(50);
+	HAL_Delay(50);
+	tpre = HAL_GetTick();
+	while (HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_0) == GPIO_PIN_SET){
+		if ((HAL_GetTick() - tpre) > 3000) {
+			break;
+		}
+	}
+	HAL_Delay(50);
 	HAL_UART_Transmit(&huart2, msgText, strlen(msgText), 1000);
 	__HAL_GPIO_EXTI_CLEAR_IT(GPIO_Pin);
 }
